@@ -10,7 +10,7 @@
 然后，克隆这个仓库到你的本地：
 
 ```bash
-git clone https://github.com/yourusername/UsernameGenerator.git
+git clone https://github.com/6art/UsernameGenerator.git
 ```
 
 ## 使用方法
