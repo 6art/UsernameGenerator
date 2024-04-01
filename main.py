@@ -114,9 +114,9 @@ elif choice == '4':
 
 # 生成字典
 for i in range(start, end+1):
-    combinations = [''.join(comb) for comb in itertools.product(*chars[:i])]
+    combinations = [''.join(comb) for comb in itertools.product(chars, repeat=i)]
     filename = os.path.join(path, f'{filename_prefix}_{i}_字符.txt')
     with open(filename, 'w') as f:
-        f.writelines([comb + '\n' for comb in combinations])
+        f.writelines([comb + '\\n' for comb in combinations])
 
 print("字典文件已成功创建。")
