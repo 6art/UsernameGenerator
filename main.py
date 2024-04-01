@@ -64,8 +64,7 @@ elif choice == '2':
     chars = string.ascii_letters + string.digits
     filename_prefix = "所有字符为[a-z]+[A-Z]+[0-9]"
 elif choice == '3':
-    chars1 = string.ascii_lowercase
-    chars2 = string.ascii_lowercase + string.digits
+    chars = string.ascii_lowercase + string.digits
     filename_prefix = "首字符不包含数字，除此之外，所有字符为[a-z]+[0-9]"
 elif choice == '4':
     chars = []
@@ -112,7 +111,6 @@ elif choice == '4':
             print("输入无效，请输入y或n")
     filename_prefix = input("确认无误后，请输入文件名前缀：")
 
-# 生成字典
 # 生成字典
 for i in range(start, end+1):
     combinations = [''.join(comb) for comb in itertools.product(chars, repeat=i)]
