@@ -1,3 +1,4 @@
+
 # UsernameGenerator
 
 这是一个用于生成用户名的Python脚本。主要目的是为了测试短用户名，但它也有许多其他用途，比如密码生成、测试数据生成等。
@@ -6,13 +7,23 @@
 
 首先，你需要安装Python。你可以在[Python官网](https://www.python.org/)下载并安装。
 
-然后，你可以使用以下命令直接运行main.py：
+## 使用方法
+
+### 方法一：直接运行main.py
+
+你可以使用以下命令直接运行main.py：
 
 ```bash
 curl https://raw.githubusercontent.com/6art/UsernameGenerator/main/main.py | python
 ```
 
-## 使用方法
+### 方法二：克隆仓库并运行
+
+你可以使用以下命令来克隆仓库并运行脚本：
+
+```bash
+git clone https://github.com/6art/UsernameGenerator.git && python UsernameGenerator/main.py
+```
 
 运行上述命令后，按照提示操作即可。
 
@@ -33,5 +44,3 @@ curl https://raw.githubusercontent.com/6art/UsernameGenerator/main/main.py | pyt
 
 MIT
 ```
-
-请注意，你需要将上述README中的`yourusername`替换为你的GitHub用户名。希望这个README能满足你的需求！
