@@ -58,14 +58,16 @@ print("4. 自定义模式")
 choice = get_input("请输入你的选择（1，2，3或4）：", "输入无效，请输入1，2，3或4", lambda x: x in ['1', '2', '3', '4'])
 
 if choice == '1':
-    chars = string.ascii_lowercase + string.digits
+    chars = string.ascii_lowercase
     filename_prefix = "所有字符为[a-z]+[0-9]"
 elif choice == '2':
-    chars = string.ascii_letters + string.digits
+    chars = string.ascii_letters
     filename_prefix = "所有字符为[a-z]+[A-Z]+[0-9]"
 elif choice == '3':
-    chars = string.ascii_lowercase + string.digits
+    chars = string.ascii_lowercase
     filename_prefix = "首字符不包含数字，除此之外，所有字符为[a-z]+[0-9]"
+    # 将数字从字符集中剔除
+    chars = chars.replace('0', '').replace('1', '').replace('2', '').replace('3', '').replace('4', '').replace('5', '').replace('6', '').replace('7', '').replace('8', '').replace('9', '')
 elif choice == '4':
     chars = []
     char_choices = ["所有字符为[a-z]+[0-9]", "所有字符为[0-9]", "所有字符为[a-z]", "所有字符为[a-z]+[A-Z]+[0-9]"]
@@ -77,13 +79,13 @@ elif choice == '4':
         print("4. 第{i+1}位字符为[a-z]+[A-Z]+[0-9]")
         char_choice = get_input("请输入你的选择（1，2，3或4）：", "输入无效，请输入1，2，3或4", lambda x: x in ['1', '2', '3', '4'])
         if char_choice == '1':
-            chars.append(string.ascii_lowercase + string.digits)
+            chars.append(string.ascii_lowercase)
         elif char_choice == '2':
             chars.append(string.digits)
         elif char_choice == '3':
             chars.append(string.ascii_lowercase)
         elif char_choice == '4':
-            chars.append(string.ascii_letters + string.digits)
+            chars.append(string.ascii_letters)
         print(f"第{i+1}位字符的构成是：{char_choices[int(char_choice)-1]}")
     while True:
         modify = input("你是否需要修改字符的构成？（y/n）：")
@@ -97,13 +99,13 @@ elif choice == '4':
                 print("4. 第{i+1}位字符为[a-z]+[A-Z]+[0-9]")
                 char_choice = get_input("请输入你的选择（1，2，3或4）：", "输入无效，请输入1，2，3或4", lambda x: x in ['1', '2', '3', '4'])
                 if char_choice == '1':
-                    chars.append(string.ascii_lowercase + string.digits)
+                    chars.append(string.ascii_lowercase)
                 elif char_choice == '2':
                     chars.append(string.digits)
                 elif char_choice == '3':
                     chars.append(string.ascii_lowercase)
                 elif char_choice == '4':
-                    chars.append(string.ascii_letters + string.digits)
+                    chars.append(string.ascii_letters)
                 print(f"第{i+1}位字符的构成是：{char_choices[int(char_choice)-1]}")
         elif modify.lower() == 'n':
             break
