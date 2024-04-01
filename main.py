@@ -67,7 +67,7 @@ elif choice == '3':
     chars = string.ascii_lowercase + string.digits
     filename_prefix = "首字符不包含数字，除此之外，所有字符为[a-z]+[0-9]"
     # 将数字从除首字符外的字符集中剔除
-    chars = chars.replace('0', '').replace('1', '').replace('2', '').replace('3', '').replace('4', '').replace('5', '').replace('6', '').replace('7', '').replace('8', '').replace('9', '')
+    chars = string.ascii_lowercase + string.digits
 elif choice == '4':
     chars = []
     char_choices = ["所有字符为[a-z]+[0-9]", "所有字符为[0-9]", "所有字符为[a-z]", "所有字符为[a-z]+[A-Z]+[0-9]"]
