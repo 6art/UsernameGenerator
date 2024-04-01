@@ -64,10 +64,8 @@ elif choice == '2':
     chars = string.ascii_letters + string.digits
     filename_prefix = "所有字符为[a-z]+[A-Z]+[0-9]"
 elif choice == '3':
-    chars = string.ascii_lowercase + string.digits
+    chars = string.ascii_lowercase
     filename_prefix = "首字符不包含数字，除此之外，所有字符为[a-z]+[0-9]"
-    # 将数字从除首字符外的字符集中剔除
-    chars = string.ascii_lowercase + string.digits
 elif choice == '4':
     chars = []
     char_choices = ["所有字符为[a-z]+[0-9]", "所有字符为[0-9]", "所有字符为[a-z]", "所有字符为[a-z]+[A-Z]+[0-9]"]
@@ -115,7 +113,7 @@ elif choice == '4':
 
 # 生成字典
 for i in range(start, end+1):
-    combinations = [''.join(comb) for comb in itertools.product(chars, repeat=i)]
+    combinations = [''.join(comb) for comb in itertools.product(*chars, repeat=i)]
     filename = os.path.join(path, f'{filename_prefix}_{i}_字符.txt')
     with open(filename, 'w') as f:
         f.writelines([comb + '\n' for comb in combinations])
