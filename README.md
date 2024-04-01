@@ -1,4 +1,6 @@
+当然，以下是一个美观的Markdown格式的README文件：
 
+```markdown
 # UsernameGenerator
 
 这是一个用于生成用户名的Python脚本。主要目的是为了测试短用户名，但它也有许多其他用途，比如密码生成、测试数据生成等。
@@ -7,21 +9,15 @@
 
 首先，你需要安装Python。你可以在[Python官网](https://www.python.org/)下载并安装。
 
-然后，克隆这个仓库到你的本地：
+然后，你可以使用以下命令直接运行main.py：
 
 ```bash
-git clone https://github.com/6art/UsernameGenerator.git
+curl https://raw.githubusercontent.com/6art/UsernameGenerator/main/main.py | python
 ```
 
 ## 使用方法
 
-在命令行中，切换到项目目录，然后运行以下命令：
-
-```bash
-python main.py
-```
-
-然后，按照提示操作即可。
+运行上述命令后，按照提示操作即可。
 
 ## 功能
 
