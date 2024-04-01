@@ -113,6 +113,7 @@ elif choice == '4':
     filename_prefix = input("确认无误后，请输入文件名前缀：")
 
 # 生成字典
+# 生成字典
 for i in range(start, end+1):
     combinations = [''.join(comb) for comb in itertools.product(chars, repeat=i)]
     filename = os.path.join(path, f'{filename_prefix}_{i}_字符.txt')
