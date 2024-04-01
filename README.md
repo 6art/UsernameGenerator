@@ -1,6 +1,3 @@
-当然，以下是一个美观的Markdown格式的README文件：
-
-```markdown
 # UsernameGenerator
 
 这是一个用于生成用户名的Python脚本。主要目的是为了测试短用户名，但它也有许多其他用途，比如密码生成、测试数据生成等。
