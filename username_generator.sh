@@ -105,7 +105,7 @@ do
     do
         command+="${charset_array[$i]}"
     done
-    command+=" | sed 's/ /\n/g' > 字典/${filename}_${n}位.txt"
+    command+=" | sed 's/ /\n/g' >> 字典/${filename}_${min_length}-${max_length}位.txt"
     eval $command
-    echo "字典已经生成在 字典/${filename}_${n}位.txt 文件中。"
+    echo "字典已经生成在 字典/${filename}_${min_length}-${max_length}位.txt 文件中。"
 done
