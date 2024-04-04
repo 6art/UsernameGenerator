@@ -108,9 +108,9 @@ fi
 for ((length=start; length<=end; length++)); do
     command="echo -n "
     for ((i=1; i<=length; i++)); do
-        command+="\$(echo -n \"$charset\" | shuf -n1)"
+        command+="\$(echo -n \"$charset\" | shuf -n1 | tr -d '{}')"
     done
-    command+=" | tr -d '\n' >> 字典/${filename}_${start}-${end}位.txt"
+    command+=" >> 字典/${filename}_${start}-${end}位.txt"
     eval "echo $command"
     eval $command
 done
