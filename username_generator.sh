@@ -58,13 +58,13 @@ if [ $mode -eq 7 ]; then
                 charset+="{A..Z}"
                 ;;
             4)
-                charset+="{{0..9},{a..z}}"
+                charset+="0-9a-z"
                 ;;
             5)
-                charset+="{{0..9},{A..Z}}"
+                charset+="0-9A-Z"
                 ;;
             6)
-                charset+="{{0..9},{a..z},{A..Z}}"
+                charset+="0-9a-zA-Z"
                 ;;
             *)
                 echo "无效的选择。"
@@ -88,15 +88,15 @@ else
             filename="大写字母"
             ;;
         4)
-            charset="{{0..9},{a..z}}"
+            charset+="0-9a-z"
             filename="小写字母或数字"
             ;;
         5)
-            charset="{{0..9},{A..Z}}"
+            charset+="0-9A-Z"
             filename="大写字母或数字"
             ;;
         6)
-            charset="{{0..9},{a..z},{A..Z}}"
+            charset+="0-9a-zA-Z"
             filename="大小写字母或数字"
             ;;
         *)
@@ -106,11 +106,12 @@ else
 fi
 
 for ((length=start; length<=end; length++)); do
-    command=""
+    command="echo -n "
     for ((i=1; i<=length; i++)); do
-        command+="${charset:$((i-1)):1}"
+        command+="\$(echo -n \"$charset\" | shuf -n1)"
     done
-    echo "$command" | sed 's/ /\n/g' >> "字典/${filename}_${start}-${end}位.txt"
+    command+=" >> 字典/${filename}_${start}-${end}位.txt"
+    eval $command
 done
 
 echo "字典已经生成在 字典/${filename}_${start}-${end}位.txt 文件中。"
