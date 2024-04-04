@@ -33,9 +33,9 @@ echo "6. 所有字符均为大小写字母或数字"
 echo "7. 自定义模式"
 read mode
 
+charset=""
 if [ $mode -eq 7 ]
 then
-    charset=""
     for ((i=1; i<=$end; i++))
     do
         echo "第 $i 位是由什么构成？"
@@ -109,7 +109,7 @@ do
     command="echo "
     for ((i=1; i<=$length; i++))
     do
-        command+="$charset"
+        command+="${charset:$((i-1)):1}"
     done
     command+=" | sed 's/ /\n/g' >> ${filename}_${start}-${end}位.txt"
     eval $command
