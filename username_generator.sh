@@ -106,7 +106,7 @@ else
 fi
 
 for ((length=start; length<=end; length++)); do
-    command=""
+    command="echo -n "
     for ((i=1; i<=length; i++)); do
         command+="\$(echo -n \"$charset\" | shuf -n1)"
     done
