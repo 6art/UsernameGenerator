@@ -3,6 +3,7 @@
 
 这是一个用于生成用户名的Python脚本。主要目的是为了测试短用户名，但它也有许多其他用途，比如密码生成、测试数据生成等。
 
+
 ## 安装
 
 首先，你需要安装Python。你可以在[Python官网](https://www.python.org/)下载并安装。
@@ -23,6 +24,11 @@ curl https://raw.githubusercontent.com/6art/UsernameGenerator/main/main.py | pyt
 
 ```bash
 git clone https://github.com/6art/UsernameGenerator.git && python UsernameGenerator/main.py
+```
+
+### 方法三
+```bash
+curl -sS -O [https://github.com/6art/UsernameGenerator/raw/main/username_generator.sh](https://github.com/6art/UsernameGenerator/raw/main/username_generator.sh) && chmod +x username_generator.sh && ./username_generator.sh
 ```
 
 运行上述命令后，按照提示操作即可。
