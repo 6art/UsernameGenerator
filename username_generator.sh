@@ -49,13 +49,13 @@ if [ $mode -eq 7 ]; then
         read choice
         case $choice in
             1)
-                charset+="{0..9}"
+                charset+="0-9"
                 ;;
             2)
-                charset+="{a..z}"
+                charset+="a-z"
                 ;;
             3)
-                charset+="{A..Z}"
+                charset+="A-Z"
                 ;;
             4)
                 charset+="0-9a-z"
@@ -76,15 +76,15 @@ if [ $mode -eq 7 ]; then
 else
     case $mode in
         1)
-            charset="{0..9}"
+            charset+="0-9"
             filename="数字"
             ;;
         2)
-            charset="{a..z}"
+            charset+="a-z"
             filename="小写字母"
             ;;
         3)
-            charset="{A..Z}"
+            charset+="A-Z"
             filename="大写字母"
             ;;
         4)
@@ -106,7 +106,7 @@ else
 fi
 
 for ((length=start; length<=end; length++)); do
-    command="echo -n "
+    command=""
     for ((i=1; i<=length; i++)); do
         command+="\$(echo -n \"$charset\" | shuf -n1)"
     done
