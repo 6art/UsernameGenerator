@@ -32,6 +32,7 @@ echo "7. 自定义模式"
 read mode
 
 charset_array=()
+filename=""
 for ((i=1; i<=$max_length; i++))
 do
     if [ $mode -eq 7 ]
@@ -71,21 +72,27 @@ do
         case $mode in
             1)
                 charset_array+=("{0..9}")
+                filename="数字"
                 ;;
             2)
                 charset_array+=("{a..z}")
+                filename="小写字母"
                 ;;
             3)
                 charset_array+=("{A..Z}")
+                filename="大写字母"
                 ;;
             4)
                 charset_array+=("{{0..9},{a..z}}")
+                filename="小写字母或数字"
                 ;;
             5)
                 charset_array+=("{{0..9},{A..Z}}")
+                filename="大写字母或数字"
                 ;;
             6)
                 charset_array+=("{{0..9},{a..z},{A..Z}}")
+                filename="大小写字母或数字"
                 ;;
             *)
                 echo "无效的选择。"
@@ -94,18 +101,41 @@ do
     fi
 done
 
-echo "请输入你想要的文件名："
-read filename
+if [ $mode -eq 7 ]
+then
+    echo "请输入你想要的文件名："
+    read filename
+fi
+
+echo "是否将不同位数的字典合并为一个字典？"
+echo "1. 是"
+echo "2. 否"
+read merge
 
 mkdir -p 字典
-for ((n=$min_length; n<=$max_length; n++))
-do
-    command="echo "
-    for ((i=0; i<$n; i++))
+if [ $merge -eq 1 ]
+then
+    for ((n=$min_length; n<=$max_length; n++))
     do
-        command+="${charset_array[$i]}"
+        command="echo "
+        for ((i=0; i<$n; i++))
+        do
+            command+="${charset_array[$i]}"
+        done
+        command+=" | sed 's/ /\n/g' >> 字典/${filename}_${min_length}-${max_length}位.txt"
+        eval $command
     done
-    command+=" | sed 's/ /\n/g' >> 字典/${filename}_${min_length}-${max_length}位.txt"
-    eval $command
     echo "字典已经生成在 字典/${filename}_${min_length}-${max_length}位.txt 文件中。"
-done
+else
+    for ((n=$min_length; n<=$max_length; n++))
+    do
+        command="echo "
+        for ((i=0; i<$n; i++))
+        do
+            command+="${charset_array[$i]}"
+        done
+        command+=" | sed 's/ /\n/g' > 字典/${filename}_${n}位.txt"
+        eval $command
+        echo "字典已经生成在 字典/${filename}_${n}位.txt 文件中。"
+    done
+fi
