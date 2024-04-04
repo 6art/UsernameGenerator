@@ -28,7 +28,7 @@ git clone https://github.com/6art/UsernameGenerator.git && python UsernameGenera
 
 ### 方法三
 ```bash
-curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
+curl -sS -O https://raw.githubusercontent.com/6art/UsernameGenerator/main/username_generator.sh && chmod +x username_generator.sh && ./username_generator.sh
 ```
 
 运行上述命令后，按照提示操作即可。
