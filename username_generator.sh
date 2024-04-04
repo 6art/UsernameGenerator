@@ -1,18 +1,21 @@
 #!/bin/bash
 
+# 检查字典目录是否存在，如果不存在则创建
+if [ ! -d "字典" ]; then
+    mkdir 字典
+fi
+
 # 询问用户要创建的字典的位数或位数范围
 echo "你想要创建特定位数的字典还是位数范围的字典？"
 echo "1. 特定位数"
 echo "2. 位数范围"
 read option
 
-if [ $option -eq 1 ]
-then
+if [ $option -eq 1 ]; then
     echo "请输入你想要创建的字典的位数："
     read start
     end=$start
-elif [ $option -eq 2 ]
-then
+elif [ $option -eq 2 ]; then
     echo "请输入你想要创建的字典的位数范围（如：2-5）："
     read range
     start=${range%-*}
@@ -34,10 +37,8 @@ echo "7. 自定义模式"
 read mode
 
 charset=""
-if [ $mode -eq 7 ]
-then
-    for ((i=1; i<=$end; i++))
-    do
+if [ $mode -eq 7 ]; then
+    for ((i=1; i<=$end; i++)); do
         echo "第 $i 位是由什么构成？"
         echo "1. 数字"
         echo "2. 小写字母"
@@ -104,15 +105,12 @@ else
     esac
 fi
 
-for ((length=$start; length<=$end; length++))
-do
-    command="eval echo "
-    for ((i=1; i<=$length; i++))
-    do
+for ((length=start; length<=end; length++)); do
+    command=""
+    for ((i=1; i<=length; i++)); do
         command+="${charset:$((i-1)):1}"
     done
-    command+=" | sed 's/ /\n/g' >> ${filename}_${start}-${end}位.txt"
-    eval $command
+    echo "$command" | sed 's/ /\n/g' >> "字典/${filename}_${start}-${end}位.txt"
 done
 
-echo "字典已经生成在 ${filename}_${start}-${end}位.txt 文件中。"
+echo "字典已经生成在 字典/${filename}_${start}-${end}位.txt 文件中。"
