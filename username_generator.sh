@@ -106,7 +106,7 @@ fi
 
 for ((length=$start; length<=$end; length++))
 do
-    command="echo "
+    command="eval echo "
     for ((i=1; i<=$length; i++))
     do
         command+="${charset:$((i-1)):1}"
